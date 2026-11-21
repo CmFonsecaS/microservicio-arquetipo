@@ -71,3 +71,15 @@ microservicios `usuarios-service` y `administracion-service`, y con ella se gene
 - **DTO + Mapper:** la API nunca expone las entidades JPA directamente.
 - **Singleton:** los componentes Spring (`@Service`, `@Repository`, `@Configuration`) tienen una única instancia.
 - **Manejo centralizado de errores:** `@RestControllerAdvice` con respuestas JSON uniformes.
+
+## Flujo de trabajo Git
+
+- `main` es la rama estable: cada cambio de código integrado en ella se despliega en AWS.
+- Los cambios se desarrollan en ramas de corta duración con un prefijo según su tipo:
+  `feature/`, `fix/`, `docs/`, `ci/`, `refactor/`.
+- Cada rama se integra a `main` mediante un Pull Request (merge commit) y se elimina después del merge.
+- Los mensajes de commit siguen la convención *Conventional Commits*: `feat:`, `fix:`, `docs:`,
+  `test:`, `ci:`, `refactor:`.
+
+Los proyectos generados heredan este flujo: el workflow incluido despliega en AWS solo cuando un
+cambio de código llega a `main` y omite los cambios de documentación.
