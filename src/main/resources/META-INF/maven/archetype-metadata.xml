@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor
+        xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0 https://maven.apache.org/xsd/archetype-descriptor-1.1.0.xsd"
+        name="foro-microservicio-arquetipo">
+
+    <!-- Propiedades que se solicitan al generar un microservicio -->
+    <requiredProperties>
+        <requiredProperty key="groupId">
+            <defaultValue>cl.duoc</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="version">
+            <defaultValue>0.0.1-SNAPSHOT</defaultValue>
+        </requiredProperty>
+        <!-- Prefijo de la clase principal, por ejemplo Foro -> ForoServiceApplication -->
+        <requiredProperty key="nombreClase"/>
+        <!-- Puerto HTTP del microservicio -->
+        <requiredProperty key="puerto">
+            <defaultValue>8080</defaultValue>
+        </requiredProperty>
+        <!-- Truco para incluir .gitignore (Maven lo excluye por defecto) -->
+        <requiredProperty key="gitignore">
+            <defaultValue>.gitignore</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="descripcion">
+            <defaultValue>Microservicio del Sistema de Foros en Linea</defaultValue>
+        </requiredProperty>
+    </requiredProperties>
+
+    <fileSets>
+        <!-- Codigo fuente Java organizado por capas -->
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>src/main/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+
+        <!-- Configuracion de Spring Boot -->
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>src/main/resources</directory>
+            <includes>
+                <include>**/*.properties</include>
+            </includes>
+        </fileSet>
+
+        <!-- Pruebas automatizadas -->
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>src/test/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+
+        <!-- Datos del servicio para el despliegue (nombre y puerto) -->
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>ec2</directory>
+            <includes>
+                <include>service.env</include>
+            </includes>
+        </fileSet>
+
+        <!-- Scripts de despliegue en EC2 (sin filtrar: contienen variables de bash) -->
+        <fileSet filtered="false" encoding="UTF-8">
+            <directory>ec2</directory>
+            <includes>
+                <include>*.sh</include>
+            </includes>
+        </fileSet>
+
+        <!-- Pipeline de GitHub Actions: pruebas, imagen en ECR y despliegue en EC2 -->
+        <fileSet filtered="false" encoding="UTF-8">
+            <directory>.github</directory>
+            <includes>
+                <include>**/*.yml</include>
+            </includes>
+        </fileSet>
+
+        <!-- Maven Wrapper -->
+        <fileSet filtered="false" encoding="UTF-8">
+            <directory>.mvn</directory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+        </fileSet>
+
+        <!-- Archivos de la raiz sin filtrar -->
+        <fileSet filtered="false" encoding="UTF-8">
+            <directory></directory>
+            <includes>
+                <include>mvnw</include>
+                <include>mvnw.cmd</include>
+                <include>Dockerfile</include>
+                <include>.dockerignore</include>
+                <include>__gitignore__</include>
+                <include>.gitattributes</include>
+                <include>.env.example</include>
+                <include>README.md</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+
+</archetype-descriptor>

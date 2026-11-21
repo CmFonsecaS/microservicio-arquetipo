@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- =====================================================
+         ARQUETIPO MAVEN: MICROSERVICIO DEL SISTEMA DE FOROS
+         Plantilla base para crear microservicios Spring Boot
+         con la misma estructura, seguridad JWT, Oracle Cloud,
+         Docker y despliegue en AWS (ECR + EC2).
+         ===================================================== -->
+    <groupId>cl.duoc</groupId>
+    <artifactId>foro-microservicio-arquetipo</artifactId>
+    <version>1.0.0</version>
+    <packaging>maven-archetype</packaging>
+
+    <name>foro-microservicio-arquetipo</name>
+    <description>Arquetipo Maven para microservicios Spring Boot del Sistema de Foros en Linea</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.archetype</groupId>
+                <artifactId>archetype-packaging</artifactId>
+                <version>3.4.0</version>
+            </extension>
+        </extensions>
+
+        <plugins>
+            <!-- Permite incluir .gitignore y .dockerignore en la plantilla -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <addDefaultExcludes>false</addDefaultExcludes>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-archetype-plugin</artifactId>
+                <version>3.4.0</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
