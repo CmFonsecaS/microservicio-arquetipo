@@ -1,0 +1,31 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+
+### IDE ###
+.idea
+*.iws
+*.iml
+*.ipr
+.vscode/
+.classpath
+.project
+.settings
+.factorypath
+
+### Credenciales (nunca subir) ###
+.env
+.env.*
+!.env.example
+application-local.properties
+wallet/
+Wallet_*/
+oracle-wallet/
+*wallet*.zip
+*.sso
+*.p12
+*.jks
+*.pem
+*.key
+
+*.log
